@@ -37,3 +37,52 @@ var cubeChecker = function (volume, side) {
   return volume <= 0 || side <= 0 ? false : side ** 3 === volume;
 };
 console.log(cubeChecker(8, 1));
+
+/*Return the number (count) of vowels in the given string.
+
+We will consider a, e, i, o, u as vowels for this Kata (but not y).
+
+The input string will only consist of lower case letters and/or spaces.*/
+
+function getCount(str) {
+  let arr = str.split("");
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    ["a", "e", "i", "o", "u"].includes(arr[i]) ? count++ : count;
+  }
+  return count;
+}
+console.log(getCount("liuda"));
+
+/*Given the triangle of consecutive odd numbers:
+
+             1
+          3     5
+       7     9    11
+   13    15    17    19
+21    23    25    27    29
+...
+Calculate the sum of the numbers in the nth row of this triangle (starting at index 1) e.g.: (Input --> Output)
+
+1 -->  1
+2 --> 3 + 5 = 8*/
+
+function rowSumOddNumbers(n) {
+  let arrAll = [];
+  let newArr = [];
+  let countNumbers = (1 + n) * 0.5 * n;
+  let number = 1;
+  for (let i = 0; i < countNumbers; i++) {
+    arrAll.push(number);
+    number += 2;
+  }
+  for (let i = 0; i < n; i++) {
+    let x = arrAll.pop();
+    newArr.push(x);
+  }
+  let sum = 0;
+  for (let i = 0; i < newArr.length; i++) {
+    sum += newArr[i];
+  }
+  return sum;
+}
