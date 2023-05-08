@@ -120,3 +120,46 @@ function fireFight(s) {
     .join(" ");
 }
 console.log(fireFight("Mast Deck Engine Water Fire"));
+/*Count the number of divisors of a positive integer n.
+
+Random tests go up to n = 500000.
+
+Examples (input --> output)
+4 --> 3 // we have 3 divisors - 1, 2 and 4
+5 --> 2 // we have 2 divisors - 1 and 5
+12 --> 6 // we have 6 divisors - 1, 2, 3, 4, 6 and 12
+30 --> 8 // we have 8 divisors - 1, 2, 3, 5, 6, 10, 15 and 30
+Note you should only return a number, the count of divisors. The numbers between parentheses are shown only for you to see which numbers are counted in each case.*/
+function getDivisorsCnt(n) {
+  let count = 0;
+  for (let i = 1; i <= n; i++) {
+    if (n % i === 0) count++;
+  }
+  return count;
+}
+console.log(getDivisorsCnt(54));
+
+const friends = [
+  { name: "Denis", money: 200, friends: ["Dima", "Yulia"] },
+  { name: "Alex", money: 400, friends: ["Yulia", "Katya"] },
+  { name: "Kirill", money: 150, friends: ["Pavel", "Irina"] },
+];
+
+for (let i = 0; i < friends.length; i++) {}
+/*
+Given an array of integers, remove the smallest value. Do not mutate the original array/list. If there are multiple elements with the same value, remove the one with a lower index. If you get an empty array/list, return an empty array/list.
+
+Don't change the order of the elements that are left.
+
+Examples
+* Input: [1,2,3,4,5], output = [2,3,4,5]
+* Input: [5,3,2,1,4], output = [5,3,2,4]
+* Input: [2,2,1,2,1], output = [2,2,2,1]
+ */
+function removeSmallest(numbers) {
+  if (numbers.length === 0) return [];
+  return numbers.filter(
+    (el, index) => index !== numbers.indexOf(Math.min(...numbers))
+  );
+}
+console.log(removeSmallest([7, 4, 1, 9, 2]));
