@@ -163,3 +163,39 @@ function removeSmallest(numbers) {
   );
 }
 console.log(removeSmallest([7, 4, 1, 9, 2]));
+
+/*In this kata you will be given a sequence of the dimensions of rectangles ( sequence with width and length ) and circles ( radius - just a number ).
+Your task is to return a new sequence of dimensions, sorted ascending by area.
+
+For example,
+
+const array = [ [4.23, 6.43], 1.23, 3.444, [1.342, 3.212] ]; // [ rectangle, circle, circle, rectangle ]
+sortByArea(array) => [ [ 1.342, 3.212 ], 1.23, [ 4.23, 6.43 ], 3.444 ] */
+function sortByArea(array) {
+  let newArr = [];
+
+  for (let i = 0; i < array.length; i++) {
+    let innerArr = [
+      array[i],
+      Array.isArray(array[i])
+        ? array[i][0] * array[i][1]
+        : 3.14 * array[i] * array[i],
+    ];
+    newArr.push(innerArr);
+  }
+  newArr.sort((a, b) => {
+    if (a[1] > b[1]) {
+      return 1;
+    }
+    if (a[1] < b[1]) {
+      return -1;
+    }
+    return 0;
+  });
+  let newArr2 = [];
+  for (let i = 0; i < newArr.length; i++) {
+    newArr2.push(newArr[i][0]);
+  }
+  return newArr2;
+}
+console.log(sortByArea([[4.23, 6.43], 1.23, 3.444, [1.342, 3.212]]));
