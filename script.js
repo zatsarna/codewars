@@ -198,4 +198,33 @@ function sortByArea(array) {
   }
   return newArr2;
 }
-console.log(sortByArea([[4.23, 6.43], 1.23, 3.444, [1.342, 3.212]]));
+/*Create a function which compares two probabilities, returning true if the first one is most likely otherwise false.
+
+For this exercise probability is expressed as two numbers separated by a colon e.g. a probability of 1 in 3 will be 1:3.
+
+So:
+
+Input: ('1:3','1:2') - returns false as 1 in 3 is less likely than 1 in 2*/
+function mostLikely(prob1, prob2) {
+  let prob1Arr = prob1.split(":");
+  let prob2Arr = prob2.split(":");
+  return (
+    Number(prob1Arr[0]) / Number(prob1Arr[1]) >
+    Number(prob2Arr[0]) / Number(prob2Arr[1])
+  );
+}
+console.log(mostLikely("1:2", "1:5"));
+/*Given an integer n and two other values, build an array of size n filled with these two values alternating.
+
+Examples
+5, true, false     -->  [true, false, true, false, true]
+10, "blue", "red"  -->  ["blue", "red", "blue", "red", "blue", "red", "blue", "red", "blue", "red"]
+0, "one", "two"    -->  [] */
+function alternate(n, firstValue, secondValue) {
+  let arr = [];
+  for (let i = 0; i < n; i++) {
+    i % 2 === 0 ? arr.push(firstValue) : arr.push(secondValue);
+  }
+  return arr;
+}
+console.log(alternate(5, true, false));
