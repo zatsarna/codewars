@@ -228,3 +228,29 @@ function alternate(n, firstValue, secondValue) {
   return arr;
 }
 console.log(alternate(5, true, false));
+
+/*Welcome. In this kata, you are asked to square every digit of a number and concatenate them.
+
+For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1. (81-1-1-81)
+
+Example #2: An input of 765 will/should return 493625 because 72 is 49, 62 is 36, and 52 is 25. (49-36-25)
+
+Note: The function accepts an integer and returns an integer.*/
+function squareDigits(num) {
+  let arr = String(num).split("");
+  return Number(arr.map((el) => Number(el) ** 2).join(""));
+}
+/*Make a program that filters a list of strings and returns a list with only your friends name in it.
+
+If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's not...
+
+Ex: Input = ["Ryan", "Kieran", "Jason", "Yous"], Output = ["Ryan", "Yous"]
+
+i.e.
+
+friend ["Ryan", "Kieran", "Mark"] `shouldBe` ["Ryan", "Mark"]
+Note: keep the original order of the names in the output.*/
+function friend(friends) {
+  return friends.filter((el) => el.length === 4);
+}
+console.log(friend(["Ryan", "Kieran", "Mark"]));
