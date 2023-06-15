@@ -283,3 +283,40 @@ function maxProduct(a) {
   a.sort((a, b) => b - a);
   return a[0] * a[1];
 }
+/*It's the academic year's end, fateful moment of your school report. The averages must be calculated. All the students come to you and entreat you to calculate their average for them. Easy ! You just need to write a script.
+
+Return the average of the given array rounded down to its nearest integer.
+
+The array will never be empty.
+*/
+function getAverage(marks) {
+  return Math.round(marks.reduce((sum, el) => sum + el, 0) / marks.length);
+}
+console.log(getAverage([1, 2, 4]));
+
+/*Complete the function to find the count of the most frequent item of an array. You can assume that input is an array of integers. For an empty array return 0
+
+Example
+input array: [3, -1, -1, -1, 2, 3, -1, 3, -1, 2, 4, 9, 3]
+ouptut: 5 
+The most frequent number in the array is -1 and it occurs 5 times.*/
+function mostFrequentItemCount(collection) {
+  const numbersSet = new Set(collection);
+  let newArr = [];
+  let count = 0;
+  for (const i of numbersSet) {
+    for (const j of collection) {
+      if (i === j) count++;
+    }
+    newArr.push([i, count]);
+    count = 0;
+  }
+  let maxNum = 0;
+  for (i = 0; i < newArr.length; i++) {
+    if (newArr[i][1] > maxNum) {
+      maxNum = newArr[i][1];
+    }
+  }
+  return maxNum;
+}
+console.log(mostFrequentItemCount([-1, -1, -1, 2, 1, 1]));
