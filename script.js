@@ -320,3 +320,56 @@ function mostFrequentItemCount(collection) {
   return maxNum;
 }
 console.log(mostFrequentItemCount([-1, -1, -1, 2, 1, 1]));
+
+/*An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. Ignore letter case.
+
+Example: (Input --> Output)
+
+"Dermatoglyphics" --> true "aba" --> false "moOse" --> false (ignore letter case)
+
+isIsogram "Dermatoglyphics" = true
+isIsogram "moose" = false
+isIsogram "aba" = false*/
+
+function isIsogram(str) {
+  return str.length === new Set(str.toLowerCase()).size;
+}
+console.log(isIsogram("absd"));
+/*Given an array of integers, find the one that appears an odd number of times.
+
+There will always be only one integer that appears an odd number of times.
+
+Examples
+[7] should return 7, because it occurs 1 time (which is odd).
+[0] should return 0, because it occurs 1 time (which is odd).
+[1,1,2] should return 2, because it occurs 1 time (which is odd).
+[0,1,0,1,0] should return 0, because it occurs 3 times (which is odd).
+[1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd).*/
+function findOdd(A) {
+  let newObj = {};
+  for (let i of new Set(A)) {
+    newObj[i] = 0;
+  }
+  for (let j = 0; j < A.length; j++) {
+    newObj[A[j]]++;
+  }
+  for ([key, value] of Object.entries(newObj)) {
+    if (value % 2 === 1) {
+      return Number(key);
+    }
+  }
+}
+
+console.log(findOdd([1, 1, 2]));
+console.log("------");
+
+const counter = () => {
+  let count = 0;
+  return () => {
+    console.log(count++);
+  };
+};
+const count1 = counter(); //  () => {console.log(count++)  };
+count1();
+count1();
+count1();
