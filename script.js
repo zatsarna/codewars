@@ -437,3 +437,39 @@ function likes(names) {
     return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`;
   }
 }
+
+/*Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.
+
+Example
+createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"
+The returned format must be correct in order to complete this challenge.
+
+Don't forget the space after the closing parentheses!*/
+function createPhoneNumber(numbers) {
+  return `(${numbers.slice(0, 3).join("")}) ${numbers
+    .slice(3, 6)
+    .join("")}-${numbers.slice(6, 10).join("")}`;
+}
+/*Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
+
+moveZeros([false,1,0,1,2,0,1,3,"a"]) // returns[false,1,1,2,1,3,"a",0,0]*/
+
+function moveZeros(arr) {
+  return [...arr.filter((el) => el !== 0), ...arr.filter((el) => el === 0)];
+}
+/*Write a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS)
+
+HH = hours, padded to 2 digits, range: 00 - 99
+MM = minutes, padded to 2 digits, range: 00 - 59
+SS = seconds, padded to 2 digits, range: 00 - 59
+The maximum time never exceeds 359999 (99:59:59)*/
+function humanReadable(seconds) {
+  let hours = Math.trunc(seconds / 3600);
+  let minutes = Math.trunc((seconds % 3600) / 60);
+  let sec = seconds % 60;
+  return `${hours < 10 ? "0" + hours.toString() : hours}:${
+    minutes < 10 ? "0" + minutes.toString() : minutes
+  }:${sec < 10 ? "0" + sec.toString() : sec}`;
+}
+
+console.log(humanReadable(0));
