@@ -582,3 +582,18 @@ function alphabetPosition(text) {
     .join(" ");
 }
 console.log(alphabetPosition("E ab*"));
+
+/*There is an array with some numbers. All numbers are equal except for one. Try to find it!
+
+findUniq([ 1, 1, 1, 2, 1, 1 ]) === 2
+findUniq([ 0, 0, 0.55, 0, 0 ]) === 0.55
+It’s guaranteed that array contains at least 3 numbers.*/
+function findUniq(arr) {
+  const arrUn = [...new Set(arr)];
+
+  let a = arr.filter((el) => el === arrUn[0]);
+  let b = arr.filter((el) => el === arrUn[1]);
+
+  return a.length === 1 ? a[0] : b[0];
+}
+console.log(findUniq([1, 1, 1, 0.5]));
