@@ -602,3 +602,39 @@ console.log(findUniq([1, 1, 1, 0.5]));
 function boolToWord(bool) {
   return bool ? "Yes" : "No";
 }
+/*Complete the function which will return the area of a circle with the given radius.
+
+Returned value is expected to be accurate up to tolerance of 0.01.
+
+If the radius is not positive, throw Error.
+
+Example:
+
+circleArea(43.2673);     // returns 5881.248  (± 0.01)
+circleArea(68);          // returns 14526.724 (± 0.01)
+circleArea(0);           // throws Error
+circleArea(-1);          // throws Error*/
+function circleArea(radius) {
+  if (radius > 0) {
+    return +(Math.PI * radius * radius).toFixed(3);
+  } else {
+    throw new Error();
+  }
+}
+console.log(circleArea(1));
+
+function sumDigPow(a, b) {
+  let arr = [];
+  for (let i = a; i <= b; i++) {
+    let first = i.toString().split("");
+    let sum = 0;
+    for (let j = 1; j <= first.length; j++) {
+      sum = sum + Number(first[j - 1]) ** j;
+    }
+    if (i === sum) {
+      arr.push(i);
+    }
+  }
+  return arr;
+}
+console.log(sumDigPow(1, 100));
